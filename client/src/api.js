@@ -1,11 +1,14 @@
 const configuredApi = import.meta.env.VITE_API_BASE_URL?.trim();
-const isGithubPages = window.location.hostname === 'muttuhb98-spec.github.io';
 const API = configuredApi || (import.meta.env.DEV ? 'http://localhost:5000/api' : '/api');
+export const isDemoMode = window.location.hostname === 'muttuhb98-spec.github.io' && !configuredApi;
+
+async function demoRequest(path, options) {
+  const { requestDemoApi } = await import('./demoApi.js');
+  return requestDemoApi(path, options);
+}
 
 export async function request(path, options = {}) {
-  if (isGithubPages && !configuredApi) {
-    throw new Error('Login is unavailable because the API URL is not configured. Deploy the server, then set the VITE_API_BASE_URL repository Actions variable to its URL ending in /api.');
-  }
+  if (isDemoMode) return demoRequest(path, options);
 
   const response = await fetch(`${API}${path}`, { credentials: 'include', headers: { 'Content-Type': 'application/json', ...options.headers }, ...options });
   if (response.status === 204) return null;

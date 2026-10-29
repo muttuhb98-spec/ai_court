@@ -98,6 +98,7 @@ body{color:#29251f;background:radial-gradient(ellipse at 68% 12%,#fffdf7 0%,#f3f
 .app-shell .tabs button{color:#625d52}
 .app-shell .tabs button.active{color:#786020;border-color:#b99a48}
 .app-shell .chat-box{background:#f3f1e9;border-color:#ded9cd}
+.demo-notice{padding:10px 20px;text-align:center;background:#3a3020;color:#f2dba7;font:11px 'IBM Plex Mono',monospace;letter-spacing:.04em}
 .app-shell .chat-header{border-color:#ded9cd}
 .app-shell .chat-header small,.app-shell .chat-header b{color:#504b42}
 .app-shell .message{background:#e8e6dc;color:#302d27}
@@ -129,3 +130,4 @@ body{color:#29251f;background:radial-gradient(ellipse at 68% 12%,#fffdf7 0%,#f3f
 .app-shell .error-box{border-color:#d8aa9b;color:#913f2e;background:#fff8f4}
 .app-shell .form-card label,.app-shell .case-form label,.app-shell .reasoning-label{color:#514b40}
 .app-shell .paperclip,.app-shell .preview-bottom,.app-shell .hero-note{color:#655f54}
+
