@@ -1,0 +1,6 @@
+{
+  "title": "The missing trophy",
+  "briefing": { "incidentSummary": "A silver cup vanished from a locked college storage room.", "location": "Northbridge College — East Hall", "timeWindow": { "start": "8:30 PM", "end": "9:15 PM" }, "victimOrTarget": "The Calder Cup" },
+  "suspects": [{"id":"s1","name":"Maya Chen","role":"Festival coordinator","relationToIncident":"Held the key","bio":"Organized the event."},{"id":"s2","name":"Dev Patel","role":"Stage technician","relationToIncident":"Worked nearby","bio":"Repaired the lighting board."},{"id":"s3","name":"Lena Brooks","role":"Photography lead","relationToIncident":"Photographed the display","bio":"Documented the evening."},{"id":"s4","name":"Omar Reyes","role":"Treasurer","relationToIncident":"Managed the prize display","bio":"Tracked event expenses."}],
+  "evidence": [], "solution": {"culpritId":"s4","motive":"He wanted the trophy insured.","method":"He moved it in a covered equipment trolley.","timeline":[],"decisiveEvidenceIds":["e1","e2"],"redHerrings":[],"suspectAlibis":[]}, "hints": [{"level":1,"text":"Compare the times."},{"level":2,"text":"Check the loading bay."},{"level":3,"text":"Omar's timeline conflicts with the footage."}]
+}
