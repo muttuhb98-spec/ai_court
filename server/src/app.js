@@ -12,6 +12,8 @@ import { memory } from './services/store.js';
 import { sampleCase } from './data/sampleCase.js';
 import { scoreCase } from './services/scoring.js';
 import { toPublicCase } from './services/serializer.js';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export const app = express();
 app.use(helmet()); app.use(cors({ origin: env.CLIENT_ORIGIN, credentials: true })); app.use(express.json({ limit: '32kb' })); app.use(cookieParser());
@@ -40,3 +42,13 @@ app.post('/api/cases/:id/accuse',auth,(req,res)=>{const c=owned(req,res);if(!c)r
 app.post('/api/cases/:id/retry',auth,(req,res)=>{const c=owned(req,res);if(!c)return fail(res,404,'CASE_NOT_FOUND','Case file not found.');if(c.status!=='failed')return fail(res,409,'NOT_FAILED','Only failed cases can be retried.');c.status='queued';c.progress=0;res.status(202).json({caseId:c.id});});
 app.delete('/api/cases/:id',auth,(req,res)=>{const c=owned(req,res);if(!c)return fail(res,404,'CASE_NOT_FOUND','Case file not found.');memory.cases.delete(c.id);res.status(204).end();});
 app.use((err,req,res,next)=>{console.error(JSON.stringify({requestId:req.requestId,code:err.code||'INTERNAL_ERROR'}));res.status(500).json({error:{code:'INTERNAL_ERROR',message:'Something went wrong. Please try again.'}});});
+
+// The production service serves the built SPA and API from one origin.
+const clientDist = resolve(dirname(fileURLToPath(import.meta.url)), '../../client/dist');
+app.use(express.static(clientDist));
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api/') || req.path === '/health') return next();
+  res.sendFile(resolve(clientDist, 'index.html'), (error) => {
+    if (error) next();
+  });
+});

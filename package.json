@@ -8,6 +8,7 @@
     "dev": "concurrently -n server,client -c yellow,cyan \"npm:dev:server\" \"npm:dev:client\"",
     "dev:server": "npm --workspace server run dev",
     "dev:client": "npm --workspace client run dev",
+    "start": "npm --workspace server run start",
     "build": "npm --workspace client run build",
     "test": "npm --workspace server test && npm --workspace client test",
     "lint": "npm --workspace server run lint && npm --workspace client run lint"

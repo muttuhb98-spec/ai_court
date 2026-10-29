@@ -11,5 +11,6 @@ const schema = z.object({
 });
 const parsed = schema.safeParse(process.env);
 if (!parsed.success) throw new Error(`Invalid environment configuration: ${parsed.error.message}`);
+if (parsed.data.NODE_ENV === 'production' && parsed.data.JWT_SECRET === 'local-development-secret-change-before-deploy') throw new Error('Set JWT_SECRET to a unique secret in production.');
 if (parsed.data.MOCK_GEMINI !== 'true' && !parsed.data.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY is required when MOCK_GEMINI is disabled.');
 export const env = parsed.data;
