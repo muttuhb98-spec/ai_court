@@ -20,6 +20,10 @@ Accounts and cases currently live in an in-memory store. They disappear whenever
 
 ## Run locally
 
+## GitHub Pages frontend
+
+The `.github/workflows/pages.yml` workflow publishes the React frontend at `https://muttuhb98-spec.github.io/ai_court/` whenever changes are pushed to `main`. In repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. GitHub Pages only hosts the frontend; sign-in, case creation, and saved cases require the Express API to run separately. To connect it, add a repository Actions variable named `VITE_API_BASE_URL` with the deployed API URL ending in `/api` (for example, `https://your-api.example.com/api`).
+
 Requirements: Node.js 20 or newer and npm.
 
 ```sh

@@ -13,5 +13,7 @@ services:
         value: "true"
       - key: COOKIE_SECURE
         value: "true"
+      - key: CLIENT_ORIGIN
+        value: https://muttuhb98-spec.github.io
       - key: JWT_SECRET
         generateValue: true
