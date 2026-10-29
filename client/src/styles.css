@@ -131,3 +131,11 @@ body{color:#29251f;background:radial-gradient(ellipse at 68% 12%,#fffdf7 0%,#f3f
 .app-shell .form-card label,.app-shell .case-form label,.app-shell .reasoning-label{color:#514b40}
 .app-shell .paperclip,.app-shell .preview-bottom,.app-shell .hero-note{color:#655f54}
 
+/* Smaller type scale across the app. */
+h1{font-size:clamp(2.35rem,5vw,3.75rem)!important}
+h2{font-size:clamp(1.5rem,3vw,2.1rem)!important}
+h3{font-size:1.25rem!important}
+h4,h5,h6{font-size:1rem!important}
+p{font-size:.9rem!important;line-height:1.55}
+button{font-size:.875rem!important}
+
